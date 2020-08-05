@@ -15,23 +15,26 @@
         <p>遇见对的人，是一种幸运；遇见...</p>
       </div>
     </div>
-    <div class="container">
+    <div class="container flexRow">
       <nav class="nav">
-        <ul class="flexRow">
-          <li>华语</li>
+        <ul>
+          <li class="on">华语</li>
           <li>流行</li>
           <li>摇滚</li>
           <li>民谣</li>
         </ul>
       </nav>
-      <section class="list"></section>
+      <section class="list flexRow">
+        <item v-for="item in 10" :key="item" />
+      </section>
     </div>
   </main>
 </template>
 
 <script>
+import item from '@/components/playItem'
 export default {
-
+  components: { item }
 }
 </script>
 
@@ -68,14 +71,25 @@ export default {
     height: inherit;
   }
   .nav {
+    width: 100px;
     ul {
       li {
         height: 40px;
         line-height: 40px;
         font-size: 14px;
         text-align: center;
+        &.on {
+          color: #ffffff;
+          background-color: #c20c0c;
+        }
       }
     }
+  }
+  .list {
+    flex-wrap: wrap;
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
   }
 }
 </style>
